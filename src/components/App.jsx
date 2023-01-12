@@ -1,16 +1,19 @@
+import { useState } from "react";
+import { Wrapper } from "components/App.styled";
+import { Header } from "components/Header/Header";
+
+
 export const App = () => {
+  const [query, setQuery] = useState("")
+
+  const handleSubmit = (value) => { 
+    setQuery(value);
+    
+  };
+  console.log(query);
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Wrapper>
+      <Header onSubmit={handleSubmit}></Header>
+    </Wrapper>
   );
 };
