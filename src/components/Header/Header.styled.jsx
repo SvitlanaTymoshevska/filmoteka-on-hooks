@@ -8,23 +8,12 @@ import tabletBGI2x from "components/Header/images/header-background-home-tablet@
 import desktopBGI from "components/Header/images/header-background-home-desktop.jpg";
 import desktopBGI2x from "components/Header/images/header-background-home-desktop@2x.jpg";
 
+// Header
 export const Wrapper = styled.header`
     background-color: ${theme.colors.backgroundHeader};
     opacity: 0.9;
-`;
-
-export const Container = styled.div`
-    padding: 40px 20px 0px 20px;
-    height: 230px;
     background-position: center;
     background-size: cover;
-    color: ${theme.colors.main};
-
-    @media screen and (min-width: 768px) {
-        padding: 45px 32px 0px 32px;
-        height: 216px;
-    }
-
     background-image: 
         linear-gradient(rgba(0, 0, 0, 0.56), rgba(0, 0, 0, 0.56)),
         url(${mobileBGI});
@@ -66,6 +55,27 @@ export const Container = styled.div`
     }
 `;
 
+export const Container = styled.div`
+    max-width: 320px;
+    height: 230px;
+    margin: 0 auto;
+    padding: 40px 20px 0px 20px;
+    color: ${theme.colors.main};
+
+    @media screen and (min-width: 768px) {
+        max-width: 768px;
+    }
+
+    @media screen and (min-width: 1280px) {
+        max-width: 1280px;
+    }
+
+    @media screen and (min-width: 768px) {
+        padding: 45px 32px 0px 32px;
+        height: 216px;
+    }
+`;
+
 export const Form = styled.form`
     position: relative;
     display: flex;
@@ -96,10 +106,25 @@ export const Input = styled.input`
     border-bottom: 0.5px solid ${theme.colors.main};
 `;
 
+export const Clean = styled.button`
+    position: absolute;
+    right: 16px;
+    padding: 8px;
+    background-color: transparent;
+    color: ${theme.colors.Hover};
+
+    transition: color ${theme.transition.duration} linear;
+
+    &:hover,
+    &:focus {
+      color: ${theme.colors.main};
+    }
+`;
+
 export const Submit = styled.button`
     position: absolute;
-    right: -15px;
-    padding: 15px;
+    right: -8px;
+    padding: 8px;
     background-color: transparent;
     color: ${theme.colors.main};
 
@@ -107,7 +132,7 @@ export const Submit = styled.button`
 
     &:hover,
     &:focus {
-      color: #999999;
+      color: ${theme.colors.Hover};
     }
 `;
 
@@ -121,5 +146,57 @@ export const Message = styled.p`
 
     @media screen and (min-width: 768px) {
       margin-top: 20px;
+    }
+`;
+
+// Navigation
+export const Nav = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
+
+export const Link = styled.a`
+    display: flex;
+    align-items: center;.
+
+        
+    color: ${theme.colors.main};
+    text-decoration: none;
+    transition: color 0.25 linear;
+
+    &:hover,
+    &:focus {
+        color: ${theme.colors.Hover};
+    }
+`;
+
+export const SiteName = styled.h1`
+    display: none;
+    font-weight: 500;
+
+    @media screen and (min-width: 768px) {
+      display: block;
+      margin-left: 8px;
+      font-size: 30px;
+    }
+
+    @media screen and (min-width: 1280px) {
+      margin-left: 10px;
+    }
+`;
+
+export const NavList = styled.ul`
+    display: flex;
+    text-transform: uppercase;
+`;
+
+export const NavItem = styled.li`
+    position: relative;
+    font-size: 12px;
+    line-height: 1.166;
+
+    &:not(:last-child) {
+      margin-right: 40px;
     }
 `;

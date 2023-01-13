@@ -2,6 +2,7 @@ export const theme = {
     colors: {
         main: "#ffffff",
         backgroundHeader: "#e5e5e5",
+        Hover: "#999999",
         warning: "#ff001b",
         activeButton: "#FF6B01",
         footerBackground: "#f7f7f7",

@@ -1,7 +1,9 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
+import { Navigation } from "components/Header/Navigation";
 import { ImSearch } from 'react-icons/im';
-import { Wrapper, Container, Form, Input, Submit, Message } from "components/Header/Header.styled";
+import { IoClose } from "react-icons/io5";
+import { Wrapper, Container, Form, Input, Clean, Submit, Message } from "components/Header/Header.styled";
 
 export const Header = ({ onSubmit }) => {
     const [value, setValue] = useState("");
@@ -10,15 +12,19 @@ export const Header = ({ onSubmit }) => {
         setValue(event.currentTarget.value);
     };
 
+    const handleClean = () => {
+         setValue("");
+    };
+
     const handleSubmit = (event) => {
         event.preventDefault();
         onSubmit(value.trim());
-        setValue("");
     };
 
     return (
         <Wrapper>
             <Container>
+                <Navigation />
                 <Form onSubmit={handleSubmit}>
                     <Input                        
                         name="input"
@@ -29,6 +35,9 @@ export const Header = ({ onSubmit }) => {
                         onChange={handleChange}
                     />
 
+                    <Clean type="button" onClick={handleClean}>
+                        <IoClose size={20} />
+                    </Clean>
                     <Submit type="submit">
                         <ImSearch size={16} />
                     </Submit>

@@ -4,6 +4,8 @@ html {
   box-sizing: border-box;
   width: 100vw;
   overflow-x: hidden;
+  -moz-tab-size: 4;
+  tab-size: 4;
 }
 
 *,
@@ -13,14 +15,12 @@ html {
 }
 
 body {
+  height: 100%;
   margin: 0;
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-style: normal;
-  /* font-weight: 500; */
-
-  height: 100%;
 
   /* background-color: var(--main-color); */
   scroll-behavior: smooth;
@@ -40,6 +40,8 @@ img {
   height: auto;
 }
 
+h1,
+h2,
 p,
 button,
 ul {
