@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "constans/theme";
+import { theme } from "constants/theme";
 
 import mobileBGI from "components/Header/images/header-background-home-mobile.jpg";
 import mobileBGI2x from "components/Header/images/header-background-home-mobile@2x.jpg";

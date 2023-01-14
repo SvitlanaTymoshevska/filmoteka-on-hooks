@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { theme } from "constans/theme";
+import { theme } from "constants/theme";
 
 // Gallery
 export const Wrapper = styled.section`
@@ -22,6 +22,10 @@ export const Container = styled.div`
     font-size: 20px;
     line-height: 1.2;
   }
+`;
+
+export const GalleryTitle = styled.h2`
+  display: none;
 `;
 
 export const Gallery = styled.ul`
@@ -78,6 +82,23 @@ export const Img = styled.img`
   }
 `;
 
+export const Plug = styled.div`
+  height: 398px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: ${theme.colors.backgroundHeader};
+
+  @media screen and (min-width: 768px) {
+    height: 455px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-bottom: 12px;
+    height: 574px;
+  }
+`;
+
 export const Info = styled.div`
   padding: 0px 5px 5px;
 `;
@@ -93,4 +114,8 @@ export const Title = styled.h2`
     font-size: 20px;
     line-height: 1.2;
   }
+`;
+
+export const Genres = styled.p`
+color: ${theme.colors.filmsDescription};
 `;

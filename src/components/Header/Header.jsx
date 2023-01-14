@@ -5,7 +5,7 @@ import { ImSearch } from 'react-icons/im';
 import { IoClose } from "react-icons/io5";
 import { Wrapper, Container, Form, Input, Clean, Submit, Message } from "components/Header/Header.styled";
 
-export const Header = ({ onSubmit }) => {
+export const Header = ({ onSubmitOrClean }) => {
     const [value, setValue] = useState("");
 
     const handleChange = (event) => {
@@ -13,12 +13,13 @@ export const Header = ({ onSubmit }) => {
     };
 
     const handleClean = () => {
-         setValue("");
+        setValue("");
+        onSubmitOrClean("");
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSubmit(value.trim());
+        onSubmitOrClean(value.trim());
     };
 
     return (
@@ -52,5 +53,5 @@ export const Header = ({ onSubmit }) => {
 };
 
 Header.propTypes = {
-        onSubmit: PropTypes.func.isRequired,
+        onSubmitOrClean: PropTypes.func.isRequired,
     };

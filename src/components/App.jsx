@@ -1,38 +1,74 @@
 import { useState, useEffect } from "react";
 
-import { getPopularFilms } from "services/api-films-service";
+import { fetchGenres, fetchFilms } from "services/api/api-films-service";
+import { STATUS } from "constants/status";
+import { theme } from "constants/theme";
 
 import { Wrapper } from "components/App.styled";
+
 import { Header } from "components/Header/Header";
+import { Audio } from 'react-loader-spinner';
 import { FilmList } from "components/FilmGallery/FilmGallery";
 
 
 export const App = () => {
+  const [status, setStatus] = useState(STATUS.idle);
   const [films, setFilms] = useState([]);
   const [page, setPage] = useState(1);
-  const [query, setQuery] = useState("")
+  const [query, setQuery] = useState("");
 
-  const handleSubmit = (value) => { 
+  console.log(setPage);
+
+  const handleSubmitOrClean = (value) => { 
     setQuery(value);
   };
-  console.log(query);
 
+  // Fetching genres
+  useEffect(() => {
+    async function getGenres() {
+      try {
+        const genres = await fetchGenres();
+        localStorage.setItem('genres', JSON.stringify(genres));
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getGenres();
+  }, []);
+  
+  // Fetching films
   useEffect(() => {
     async function getFilms() {
+      setStatus(STATUS.pending);
       try {
-        const popularFilms = await getPopularFilms(page);
-        setFilms(popularFilms);
+        const films = await fetchFilms(page, query);
+        setFilms(films);
+        setStatus(STATUS.resolved);
       } catch (error) {
-        
+        setStatus(STATUS.rejected)
+        console.log(error.message);
       }
     };
     getFilms();
-  }, [page]);
+  }, [page, query]);
 
   return (
     <Wrapper>
-      <Header onSubmit={handleSubmit}></Header>
-      <FilmList films={films}></FilmList>
+      <Header onSubmitOrClean={handleSubmitOrClean}></Header>
+
+      {status === STATUS.resolved &&
+        <FilmList films={films}></FilmList>}
+      
+      {status === STATUS.pending &&
+        <Audio
+          height="100"
+          width="100"
+          color={theme.colors.filmsDescription}
+          ariaLabel="audio-loading"
+          wrapperStyle={{"justifyContent":"center"}}
+          visible={true}
+        />}
+
     </Wrapper>
   );
 };

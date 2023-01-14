@@ -1,30 +1,68 @@
 import PropTypes from "prop-types";
-import { Card, Img, Info, Title } from "components/FilmGallery/FilmGallery.Styled";
-
+import { Card, Img, Plug, Info, Title, Genres } from "components/FilmGallery/FilmGallery.Styled";
 
 export const FilmCard = ({ film }) => {
-  const { poster_path, title, genre_ids, release_date, id } = film;
-  return (
-        <Card>
-            <Img
-                srcSet={`
-                    https://image.tmdb.org/t/p/w300/${poster_path}     300w,
-                    https://image.tmdb.org/t/p/w500/${poster_path}     500w,
-                    https://image.tmdb.org/t/p/w780/${poster_path}     780w,
-                    https://image.tmdb.org/t/p/w1280/${poster_path}    1280w,
-                    https://image.tmdb.org/t/p/original/${poster_path} 2000w
-                `}
-                loading="lazy"
-                src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
-                alt={`Poster of the film ${title}`}
-                sizes="(max-width: 320px) 280px,
-                       (max-width: 768px) 340px,
-                       400px"/>
+  const { poster_path, title, genre_ids, release_date } = film;
+  
+  const poster = poster_path ? (
+    <Img
+          srcSet={`
+              https://image.tmdb.org/t/p/w300/${poster_path}     300w,
+              https://image.tmdb.org/t/p/w500/${poster_path}     500w,
+              https://image.tmdb.org/t/p/w780/${poster_path}     780w,
+              https://image.tmdb.org/t/p/w1280/${poster_path}    1280w,
+              https://image.tmdb.org/t/p/original/${poster_path} 2000w
+          `}
+          loading="lazy"
+          src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+          alt={`Poster of the film ${title}`}
+          sizes="(max-width: 320px) 280px, (max-width: 768px) 340px, 400px"
+    />
+  ) : <Plug>Poster not found</Plug>;   
 
-        <Info>
-            <Title>{title}</Title>
-          {/* <p class="films__genres">${genresList(genre_ids)} ${generateYear(release_date)}</p> */}
-        </Info>
-      </Card>
-    );
+  return (
+    <Card>
+      {poster}
+      <Info>
+        <Title>{title}</Title>
+        <Genres>{genresList(genre_ids)}{year(release_date)}</Genres>
+      </Info>
+    </Card>
+  );
 };
+
+FilmCard.propType = {
+  film: PropTypes.shape({
+    genre_ids: PropTypes.arrayOf(PropTypes.number),
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    title: PropTypes.string.isRequired,
+  }),
+};
+
+const genresList = (filmGenresID) => {
+  const genresArray = JSON.parse(localStorage.getItem('genres'));
+  if (!genresArray) {
+      return "unknown";
+  }
+  
+  const filtredGenresArray = filmGenresID.map(genreID => genresArray.find(genre => genre.id === genreID).name);
+  let cuttedGenresArray = [];
+
+  if (filtredGenresArray.length > 2) {
+    cuttedGenresArray = [...filtredGenresArray.slice(0, 2), "Otheres"];
+  } else {
+    cuttedGenresArray = [...filtredGenresArray];
+  };
+
+  return cuttedGenresArray.join(", ");
+}
+
+const year = (release_date) => {
+  let year = '';
+  if (!release_date) {
+    return year;
+  }
+  year = ' | ' + release_date?.slice(0, 4);
+  return year;
+}

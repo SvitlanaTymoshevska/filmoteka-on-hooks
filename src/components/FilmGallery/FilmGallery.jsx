@@ -1,11 +1,11 @@
 import PropTypes from "prop-types";
+import { Wrapper, Container, GalleryTitle, Gallery } from "components/FilmGallery/FilmGallery.Styled";
 import { FilmCard } from "components/FilmGallery/FilmCard";
-import { Wrapper, Container, Gallery } from "components/FilmGallery/FilmGallery.Styled";
 
 export const FilmList = ({films}) => {
     return (
         <Wrapper>
-            {/* <h2 style="display: none">Cards of Films</h2> */}
+            <GalleryTitle>Films gallery</GalleryTitle>
             <Container>
                 <Gallery>
                     {films.map((film) => { 
@@ -20,4 +20,14 @@ export const FilmList = ({films}) => {
             </Container>
         </Wrapper>
     );
+};
+
+FilmList.propType = {
+    film: PropTypes.shape({
+        genre_ids: PropTypes.arrayOf(PropTypes.number),  
+        id: PropTypes.number.isRequired,
+        poster_path: PropTypes.string,
+        release_date: PropTypes.string,
+        title: PropTypes.string.isRequired,
+  }),
 };
