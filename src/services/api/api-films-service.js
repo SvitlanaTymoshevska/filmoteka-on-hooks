@@ -10,12 +10,13 @@ export async function fetchFilms (page, query) {
     }
 
     const response = await axios.get(URL);
-    
-    if (response.length === 0 && query) {
-      throw new Error("Search result not successful. Enter the correct movie name and repeat");
+    const results = response.data.results;
+
+    if (results.length === 0 && query) {
+      throw new Error();
     }
 
-    return response.data.results;
+    return results;
 }
 
 export async function fetchGenres() {

@@ -95,6 +95,7 @@ export const Form = styled.form`
 
 export const Input = styled.input`
     width: 100%;
+    height: 22px;
     background-color: transparent;
     color: ${theme.colors.main};
 
@@ -106,12 +107,13 @@ export const Input = styled.input`
     border-bottom: 0.5px solid ${theme.colors.main};
 `;
 
-export const Clean = styled.button`
+export const CleanButton = styled.button`
     position: absolute;
+    top: -8px;
     right: 16px;
     padding: 8px;
     background-color: transparent;
-    color: ${theme.colors.Hover};
+    color: ${theme.colors.hover};
 
     transition: color ${theme.transition.duration} linear;
 
@@ -121,8 +123,9 @@ export const Clean = styled.button`
     }
 `;
 
-export const Submit = styled.button`
+export const SubmitButton = styled.button`
     position: absolute;
+    top: -6px;
     right: -8px;
     padding: 8px;
     background-color: transparent;
@@ -132,12 +135,12 @@ export const Submit = styled.button`
 
     &:hover,
     &:focus {
-      color: ${theme.colors.Hover};
+      color: ${theme.colors.hover};
     }
 `;
 
 export const Message = styled.p`
-    display: none; 
+    display: block; 
     text-align: center;
     margin-top: 16px;
     color: ${theme.colors.warning};
@@ -167,7 +170,7 @@ export const Link = styled.a`
 
     &:hover,
     &:focus {
-        color: ${theme.colors.Hover};
+        color: ${theme.colors.hover};
     }
 `;
 

@@ -117,5 +117,5 @@ export const Title = styled.h2`
 `;
 
 export const Genres = styled.p`
-color: ${theme.colors.filmsDescription};
+color: ${theme.colors.accent};
 `;

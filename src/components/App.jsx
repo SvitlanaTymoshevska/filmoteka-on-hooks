@@ -9,6 +9,7 @@ import { Wrapper } from "components/App.styled";
 import { Header } from "components/Header/Header";
 import { Audio } from 'react-loader-spinner';
 import { FilmList } from "components/FilmGallery/FilmGallery";
+import { Pagination } from "components/Pagination/Pagination";
 
 
 export const App = () => {
@@ -16,11 +17,13 @@ export const App = () => {
   const [films, setFilms] = useState([]);
   const [page, setPage] = useState(1);
   const [query, setQuery] = useState("");
+  const [error, setError] = useState(false);
 
   console.log(setPage);
 
   const handleSubmitOrClean = (value) => { 
     setQuery(value);
+    setError(false);
   };
 
   // Fetching genres
@@ -45,8 +48,8 @@ export const App = () => {
         setFilms(films);
         setStatus(STATUS.resolved);
       } catch (error) {
-        setStatus(STATUS.rejected)
-        console.log(error.message);
+        setStatus(STATUS.rejected);
+        setError(true);
       }
     };
     getFilms();
@@ -54,7 +57,9 @@ export const App = () => {
 
   return (
     <Wrapper>
-      <Header onSubmitOrClean={handleSubmitOrClean}></Header>
+      <Header
+        onSubmitOrClean={handleSubmitOrClean}
+        error={error}></Header>
 
       {status === STATUS.resolved &&
         <FilmList films={films}></FilmList>}
@@ -69,6 +74,7 @@ export const App = () => {
           visible={true}
         />}
 
+      <Pagination />
     </Wrapper>
   );
 };
