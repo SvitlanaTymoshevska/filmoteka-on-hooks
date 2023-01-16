@@ -16,7 +16,7 @@ export async function fetchFilms (page, query) {
       throw new Error();
     }
 
-    return results;
+    return [results, response.data.total_pages];
 }
 
 export async function fetchGenres() {

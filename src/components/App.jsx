@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { fetchGenres, fetchFilms } from "services/api/api-films-service";
-import { STATUS } from "constants/status";
+import { STATUS, PAGINATION_PAGE } from "constants/status";
 import { theme } from "constants/theme";
 
 import { Wrapper } from "components/App.styled";
@@ -16,14 +16,19 @@ export const App = () => {
   const [status, setStatus] = useState(STATUS.idle);
   const [films, setFilms] = useState([]);
   const [page, setPage] = useState(1);
+  const [paginationPage, setPaginationPage] = useState(PAGINATION_PAGE.firts);
+  const [totalPages, setTotalPages] = useState(1);
   const [query, setQuery] = useState("");
   const [error, setError] = useState(false);
-
-  console.log(setPage);
 
   const handleSubmitOrClean = (value) => { 
     setQuery(value);
     setError(false);
+  };
+
+  const handlePaginationClick = (page, paginationPage) => {
+    setPage(page);
+    setPaginationPage(paginationPage);
   };
 
   // Fetching genres
@@ -44,8 +49,9 @@ export const App = () => {
     async function getFilms() {
       setStatus(STATUS.pending);
       try {
-        const films = await fetchFilms(page, query);
+        const [films,  totalPages] = await fetchFilms(page, query);
         setFilms(films);
+        setTotalPages(totalPages);
         setStatus(STATUS.resolved);
       } catch (error) {
         setStatus(STATUS.rejected);
@@ -59,22 +65,31 @@ export const App = () => {
     <Wrapper>
       <Header
         onSubmitOrClean={handleSubmitOrClean}
-        error={error}></Header>
+        error={error}
+      />
 
       {status === STATUS.resolved &&
-        <FilmList films={films}></FilmList>}
+        <FilmList
+          films={films}
+        />}
       
       {status === STATUS.pending &&
         <Audio
           height="100"
           width="100"
-          color={theme.colors.filmsDescription}
+          color={theme.colors.accent}
           ariaLabel="audio-loading"
           wrapperStyle={{"justifyContent":"center"}}
           visible={true}
         />}
 
-      <Pagination />
+      {status === STATUS.resolved &&
+        <Pagination
+          onClick={handlePaginationClick}
+          currentPage={page}
+          currentPaginationPage={paginationPage}
+          totalPages={totalPages}
+        />}
     </Wrapper>
   );
 };

@@ -43,6 +43,7 @@ export const Button = styled.a`
 
     border-radius: 5px;
 
+    font-size: 12px;
     font-weight: 500;
     line-height: 1.33;
 
