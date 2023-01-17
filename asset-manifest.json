@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/filmoteka-on-hooks/static/css/main.a67aed5f.css",
-    "main.js": "/filmoteka-on-hooks/static/js/main.00478397.js",
+    "main.js": "/filmoteka-on-hooks/static/js/main.7f589d35.js",
     "static/media/header-background-home-desktop@2x.jpg": "/filmoteka-on-hooks/static/media/header-background-home-desktop@2x.09462601fc21b6af3584.jpg",
     "static/media/header-background-home-tablet@2x.jpg": "/filmoteka-on-hooks/static/media/header-background-home-tablet@2x.496d183dcc69173e24f2.jpg",
     "static/media/film-icon.svg": "/filmoteka-on-hooks/static/media/film-icon.7a821e554deb97a1bc69940b02b8ce6d.svg",
     "index.html": "/filmoteka-on-hooks/index.html",
     "main.a67aed5f.css.map": "/filmoteka-on-hooks/static/css/main.a67aed5f.css.map",
-    "main.00478397.js.map": "/filmoteka-on-hooks/static/js/main.00478397.js.map"
+    "main.7f589d35.js.map": "/filmoteka-on-hooks/static/js/main.7f589d35.js.map"
   },
   "entrypoints": [
     "static/css/main.a67aed5f.css",
-    "static/js/main.00478397.js"
+    "static/js/main.7f589d35.js"
   ]
 }
