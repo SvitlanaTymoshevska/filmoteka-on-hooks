@@ -22,6 +22,8 @@ export const App = () => {
   const [error, setError] = useState(false);
 
   const handleSubmitOrClean = (value) => { 
+    setPage(page);
+    setPaginationPage(paginationPage);
     setQuery(value);
     setError(false);
   };

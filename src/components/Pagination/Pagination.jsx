@@ -15,40 +15,58 @@ export const Pagination = ({ onClick, currentPage, currentPaginationPage, totalP
         onClick(page, paginationPage);
     };
 
-    console.log(currentPage);
-    console.log(currentPaginationPage);
-
     const handleForwardClick = () => {
         const page = currentPage + 1;
-        const paginationPage = (currentPaginationPage) => {
-            switch (currentPaginationPage) {
-                case "firts":
-                    return "second";
-                case "second":
-                    return "third";
-                case "third":
-                    return "fourth";
-                case "fourth":
-                    return "n";
-                case "n" && page < totalPages - 5:
-                    return "n";
-                case "n" && page === totalPages - 5:
-                    return "fourthLast";                
-                case "fourthLast":
-                    return "thirdLast";
-                case "thirdLast":
-                    return "secondLast";
-                case "secondLast":
-                    return "last";  
-                default:
-                    break;
-            }
-        };  
+        let paginationPage;
+     
+        if (currentPaginationPage === "firts") {
+            paginationPage = "second";
+        } else if (currentPaginationPage === "second") {
+            paginationPage = "third";
+        } else if (currentPaginationPage === "third") {
+            paginationPage = "fourth";
+        } else if (currentPaginationPage === "fourth") {
+            paginationPage = "n";
+        } else if (currentPaginationPage === "n" && page === (totalPages - 3)) {
+            paginationPage = "fourthLast";
+        } else if (currentPaginationPage === "fourthLast") {
+            paginationPage = "thirdLast";
+        } else if (currentPaginationPage === "thirdLast") {
+            paginationPage = "secondLast";
+        } else if (currentPaginationPage === "secondLast") {
+            paginationPage = "last";
+        } else { 
+            paginationPage = "n";
+        }
+
         onClick(page, paginationPage);
     };
 
     const handleBackClick = () => {
+        const page = currentPage - 1;
+        let paginationPage;
+     
+        if (currentPaginationPage === "last") {
+            paginationPage = "secondLast";
+        } else if (currentPaginationPage === "secondLast") {
+            paginationPage = "thirdLast";
+        } else if (currentPaginationPage === "thirdLast") {
+            paginationPage = "fourthLast";
+        } else if (currentPaginationPage === "fourthLast") {
+            paginationPage = "n";
+        } else if (currentPaginationPage === "n" && page === 4) {
+            paginationPage = "fourth";
+        } else if (currentPaginationPage === "fourth") {
+            paginationPage = "third";
+        } else if (currentPaginationPage === "third") {
+            paginationPage = "second";
+        } else if (currentPaginationPage === "second") {
+            paginationPage = "firts";
+        } else { 
+            paginationPage = "n";
+        }
 
+        onClick(page, paginationPage);
     };
 
     if (currentPaginationPage === "firts" && currentPage <= 2) {
