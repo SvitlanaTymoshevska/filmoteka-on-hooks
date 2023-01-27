@@ -1,5 +1,6 @@
 import axios from "axios";
-import { API_KEY } from "services/api/api-key";
+
+const API_KEY = '115b567d77b04428b1251a93b22d9778';
 
 export async function fetchFilms (page, query) {  
     let URL = "";

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
-import { fetchGenres, fetchFilms } from "services/api/api-films-service";
-import { STATUS, PAGINATION_PAGE } from "constants/status";
+import { fetchGenres, fetchFilms } from "services/api-films-service";
+import { STATUS } from "constants/status";
 import { theme } from "constants/theme";
 
 import { Wrapper } from "components/App.styled";
@@ -16,21 +16,14 @@ export const App = () => {
   const [status, setStatus] = useState(STATUS.idle);
   const [films, setFilms] = useState([]);
   const [page, setPage] = useState(1);
-  const [paginationPage, setPaginationPage] = useState(PAGINATION_PAGE.firts);
   const [totalPages, setTotalPages] = useState(1);
   const [query, setQuery] = useState("");
   const [error, setError] = useState(false);
 
   const handleSubmitOrClean = (value) => { 
     setPage(page);
-    setPaginationPage(paginationPage);
     setQuery(value);
     setError(false);
-  };
-
-  const handlePaginationClick = (page, paginationPage) => {
-    setPage(page);
-    setPaginationPage(paginationPage);
   };
 
   // Fetching genres
@@ -87,11 +80,11 @@ export const App = () => {
 
       {status === STATUS.resolved &&
         <Pagination
-          onClick={handlePaginationClick}
           currentPage={page}
-          currentPaginationPage={paginationPage}
-          totalPages={totalPages}
-        />}
+          totalPageCount={totalPages}
+          onPageChange={page => setPage(page)}
+        />
+      }
     </Wrapper>
   );
 };

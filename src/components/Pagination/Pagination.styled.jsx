@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { theme } from "constants/theme";
 
-export const Container = styled.div`
+export const Container = styled.ul`
+    display: flex;
+    justify-content: center;
     margin-bottom: 40px;
 
     @media screen and (min-width: 768px) {
@@ -9,21 +11,9 @@ export const Container = styled.div`
     }
 `;
 
-export const List = styled.ul`
-    display: flex;
-    justify-content: center;
-
-    width: 100%;
-`;
-
 export const Item = styled.li`
-    display: flex;
-
-    justify-content: center;
-    align-content: center;
-
-    height: 40px;
-    width: 40px;
+    min-height: 40px;
+    min-width: 40px;
 
     &:not(:last-child) {
         margin-right: 6px;
@@ -34,50 +24,49 @@ export const Item = styled.li`
     }
 `;
 
-export const Button = styled.a`
-    display: block;
-
-    cursor: pointer;
-    text-align: center;
-    padding: 13px;
-
+export const Arrow = styled.li`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    min-width: 40px;
     border-radius: 5px;
-
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 1.33;
-
-    background-color: transparent;
-
+    background-color: #f7f7f7;
+    
     &:hover,
     &:focus {
+        cursor: pointer;
         color: ${theme.colors.accent};
     }
 `;
 
-export const CurrentPage = styled.p`
+export const Number = styled.div`
     display: flex;
-
     justify-content: center;
     align-items: center;
-
-    min-height: 40px;
-    min-width: 40px;
-
+    height: 100%;
+    width: 100%;
     border-radius: 5px;
 
-    background-color: ${theme.colors.accent};
-    color: ${theme.colors.main};
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.33;
+    background-color: ${({ current }) => current ? theme.colors.accent : "transparent"};
+    color: ${({ current }) => current ? theme.colors.main : "inherit"};
+
+    &:hover,
+    &:focus {
+        cursor: pointer;
+        color: ${theme.colors.accent};
+    }
 `;
 
 export const Dots = styled.div`
     display: flex;
-
     justify-content: center;
     align-items: center;
-
-    min-height: 40px;
-    min-width: 40px;
-
+    height: 100%;
+    width: 100%;
     border-radius: 5px;
 `;
