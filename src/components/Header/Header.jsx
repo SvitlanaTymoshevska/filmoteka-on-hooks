@@ -1,18 +1,12 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-import { Navigation } from "components/Header/Navigation";
+import { ReactComponent as FilmIcon } from "components/Header/images/film-icon.svg";
 import { ImSearch } from 'react-icons/im';
 import { IoClose } from "react-icons/io5";
-import { Wrapper, Container, Form, Input, CleanButton, SubmitButton, Message } from "components/Header/Header.styled";
+import { Wrapper, Container, Form, Input, CleanButton, SubmitButton, Message,  Nav, Link, SiteName, NavList, NavItem  } from "components/Header/Header.styled";
 
 export const Header = ({ onSubmitOrClean, error }) => {
     const [value, setValue] = useState("");
-
-    const errorMessage = error ? (
-       <Message>
-            Search result not successful. Enter the correct movie name and repeat
-        </Message>
-    ) : "";  
 
     const handleChange = (event) => {
         setValue(event.currentTarget.value);
@@ -31,7 +25,24 @@ export const Header = ({ onSubmitOrClean, error }) => {
     return (
         <Wrapper>
             <Container>
-                <Navigation />
+                <Nav>
+                    <Link>
+                        <FilmIcon/>
+                        <SiteName>Filmoteka</SiteName>
+                    </Link>
+                    <NavList>
+                        <NavItem>
+                            <Link>
+                                Home
+                            </Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link>
+                                My library
+                            </Link>
+                        </NavItem>
+                    </NavList>
+                </Nav>
                 <Form onSubmit={handleSubmit}>
                     <Input                        
                         name="input"
@@ -50,7 +61,10 @@ export const Header = ({ onSubmitOrClean, error }) => {
                     </SubmitButton>
                 </Form>
 
-                {errorMessage}
+                {error && 
+                <Message>
+                    Search result not successful. Enter the correct movie name and repeat
+                </Message>}
             </Container>
         </Wrapper>
     );
