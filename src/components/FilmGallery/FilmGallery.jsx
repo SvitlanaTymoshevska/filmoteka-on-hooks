@@ -1,11 +1,15 @@
 import PropTypes from "prop-types";
-import { Wrapper, Container, GalleryTitle, Gallery } from "components/FilmGallery/FilmGallery.Styled";
-import { FilmCard } from "components/FilmGallery/FilmCard";
+import { Wrapper, Container, Message, GalleryTitle, Gallery } from "components/FilmGallery/FilmGallery.Styled";
+import { FilmCard } from "components/FilmCard/FilmCard";
 
-export const FilmList = ({films}) => {
+export const FilmList = ({error, films}) => {
     return (
         <Wrapper>
             <GalleryTitle>Films gallery</GalleryTitle>
+            {error &&
+                <Message>
+                    Search result not successful. Enter the correct movie name and repeat.
+                </Message>}            
             <Container>
                 <Gallery>
                     {films.map((film) => { 
@@ -23,6 +27,7 @@ export const FilmList = ({films}) => {
 };
 
 FilmList.propType = {
+    error: PropTypes.string,
     film: PropTypes.shape({
         genre_ids: PropTypes.arrayOf(PropTypes.number),  
         id: PropTypes.number.isRequired,
