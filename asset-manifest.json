@@ -1,9 +1,9 @@
 {
   "files": {
     "main.css": "/filmoteka-on-hooks/static/css/main.adab396b.css",
-    "main.js": "/filmoteka-on-hooks/static/js/main.885c8aef.js",
-    "static/js/975.c7efd3ad.chunk.js": "/filmoteka-on-hooks/static/js/975.c7efd3ad.chunk.js",
-    "static/js/28.231da4bf.chunk.js": "/filmoteka-on-hooks/static/js/28.231da4bf.chunk.js",
+    "main.js": "/filmoteka-on-hooks/static/js/main.087718a0.js",
+    "static/js/975.941a1aab.chunk.js": "/filmoteka-on-hooks/static/js/975.941a1aab.chunk.js",
+    "static/js/28.cfa6ad36.chunk.js": "/filmoteka-on-hooks/static/js/28.cfa6ad36.chunk.js",
     "static/js/546.8838bf15.chunk.js": "/filmoteka-on-hooks/static/js/546.8838bf15.chunk.js",
     "static/media/JohnTravolta.gif": "/filmoteka-on-hooks/static/media/JohnTravolta.b0232c0ecedc97323513.gif",
     "static/media/header-background-library-desktop@2x.jpg": "/filmoteka-on-hooks/static/media/header-background-library-desktop@2x.cbe65486e101a825a895.jpg",
@@ -16,13 +16,13 @@
     "static/media/film-icon.svg": "/filmoteka-on-hooks/static/media/film-icon.7a821e554deb97a1bc69940b02b8ce6d.svg",
     "index.html": "/filmoteka-on-hooks/index.html",
     "main.adab396b.css.map": "/filmoteka-on-hooks/static/css/main.adab396b.css.map",
-    "main.885c8aef.js.map": "/filmoteka-on-hooks/static/js/main.885c8aef.js.map",
-    "975.c7efd3ad.chunk.js.map": "/filmoteka-on-hooks/static/js/975.c7efd3ad.chunk.js.map",
-    "28.231da4bf.chunk.js.map": "/filmoteka-on-hooks/static/js/28.231da4bf.chunk.js.map",
+    "main.087718a0.js.map": "/filmoteka-on-hooks/static/js/main.087718a0.js.map",
+    "975.941a1aab.chunk.js.map": "/filmoteka-on-hooks/static/js/975.941a1aab.chunk.js.map",
+    "28.cfa6ad36.chunk.js.map": "/filmoteka-on-hooks/static/js/28.cfa6ad36.chunk.js.map",
     "546.8838bf15.chunk.js.map": "/filmoteka-on-hooks/static/js/546.8838bf15.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.adab396b.css",
-    "static/js/main.885c8aef.js"
+    "static/js/main.087718a0.js"
   ]
 }
