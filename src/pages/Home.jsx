@@ -41,6 +41,7 @@ const Home = () => {
             }
         };
         getFilms();
+        window.scrollTo(0, 0);
     }, [page, query]);
 
     // Delete the error message

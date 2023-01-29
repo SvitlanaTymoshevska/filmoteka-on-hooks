@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ImHeart } from "react-icons/im";
+import { ImHeart, ImArrowUp2 } from "react-icons/im";
 import { theme } from "constants/theme";
 
 export const Wrapper = styled.footer`
@@ -61,4 +61,55 @@ export const Button = styled.button`
     font-size: 14px;
     line-height: 1.15;
     text-decoration-line: underline;  
+`;
+
+export const ScrollButton = styled.button`
+    @keyframes btn-anim {
+        0% {
+            transform: rotate(30deg);
+        }
+
+        5% {
+            transform: rotate(-30deg);
+        }
+
+        10% {
+            transform: rotate(15deg);
+        }
+
+        14% {
+            transform: rotate(-15deg);
+        }
+
+        18% {
+            transform: rotate(0);
+        }
+    }
+
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-color: transparent;
+    cursor: pointer;
+    background-color: ${theme.colors.blurAccent};
+    z-index: 10;
+    animation: btn-anim 6s ease-in-out infinite forwards;
+    transition: background-color 250ms cubic-bezier(0.5, 1, 0.89, 1);
+
+    &:hover,
+    &:focus {
+        background-color: ${theme.colors.accent};
+    }
+`;
+
+export const ScrollIcon = styled(ImArrowUp2)`
+    width: 18px;
+    height: 18px;
+    color:  ${theme.colors.main};
 `;
