@@ -5,8 +5,8 @@ import { HomeHeader } from "components/HomeHeader/HomeHeader";
 import { LibraryHeader } from "components/LibraryHeader/LibraryHeader";
 import { Footer } from "components/Footer/Footer";
 
-const Home = lazy(() => import("pages/Home"));
-const Library = lazy(() => import("pages/Library"));
+const Home = lazy(() => import("pages/Home/Home"));
+const Library = lazy(() => import("pages/Library/Library"));
 
 export const App = () => {
   return (

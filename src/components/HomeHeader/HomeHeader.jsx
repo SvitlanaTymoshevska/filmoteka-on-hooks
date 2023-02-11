@@ -2,10 +2,9 @@ import { useState, Suspense } from "react";
 import { Outlet, useSearchParams } from "react-router-dom";
 
 import { Navigation } from "components/Navigation/Navigation";
-import { Audio } from 'react-loader-spinner';
-import { theme } from "constants/theme";
 import { ImSearch } from 'react-icons/im';
 import { IoClose } from "react-icons/io5";
+import { Loader } from "components/Loader/Loader";
 import { Wrapper, Container, Form, Input, CleanButton, SubmitButton } from "components/HomeHeader/HomeHeader.styled";
 
 export const HomeHeader = () => {
@@ -56,16 +55,7 @@ export const HomeHeader = () => {
                     </Form>
                 </Container>      
             </Wrapper>
-            <Suspense
-                fallback={
-                    <Audio
-                        height="100"
-                        width="100"
-                        color={theme.colors.accent}
-                        ariaLabel="audio-loading"
-                        wrapperStyle={{"justifyContent":"center"}}
-                        visible={true}
-                    />}>
+            <Suspense fallback={<Loader />}>
                 <Outlet />
             </Suspense>
         </>

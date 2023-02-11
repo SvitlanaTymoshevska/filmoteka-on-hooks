@@ -1,11 +1,6 @@
 import styled from "styled-components";
 import { theme } from "constants/theme";
 
-export const Wrapper = styled.section`
-  position: relative;
-  flex-grow: 1;
-`;
-
 export const Container = styled.div`
   max-width: 320px;
   margin: 0 auto;

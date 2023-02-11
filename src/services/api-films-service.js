@@ -26,3 +26,30 @@ export async function fetchGenres() {
 
     return response.data.genres;
 }
+
+export async function fetchFilmByID(id) {
+    const URL = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
+    const response = await axios.get(URL);
+
+    return response.data;
+}
+
+export async function fetchCast(id) {
+    const URL = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
+    const response = await axios.get(URL);
+
+    return response.data.cast;
+;
+}
+
+export async function fetchReviews(id) {
+    const URL = `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${API_KEY}&language=en-US&page=1`;
+    const response = await axios.get(URL);
+    const results = response.data.results;
+
+    if (results.length === 0) {
+      throw new Error("We don't have any reviews for this movie.");
+    }
+    return results;
+;
+}

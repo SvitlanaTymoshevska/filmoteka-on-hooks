@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { fetchGenres, fetchFilms } from "services/api-films-service";
-
+import { Wrapper } from "pages/Home/Home.styled";
 import { FilmList } from "components/FilmGallery/FilmGallery";
 import { Pagination } from "components/Pagination/Pagination";
 
@@ -54,7 +54,7 @@ const Home = () => {
 
     return (
         films &&
-            <>  
+            <Wrapper>  
                 <FilmList
                     error={error}
                     films={films}/>
@@ -62,7 +62,7 @@ const Home = () => {
                     currentPage={Number(page)}
                     totalPageCount={totalPages}
                     onPageChange={page => setSearchParams(query !== "" ? { query, page } : { page })}/>
-            </>
+            </Wrapper>
     );
 };
 

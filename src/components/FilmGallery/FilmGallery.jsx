@@ -1,10 +1,10 @@
 import PropTypes from "prop-types";
-import { Wrapper, Container, Message, GalleryTitle, Gallery } from "components/FilmGallery/FilmGallery.Styled";
+import { Container, Message, GalleryTitle, Gallery } from "components/FilmGallery/FilmGallery.Styled";
 import { FilmCard } from "components/FilmCard/FilmCard";
 
 export const FilmList = ({error, films}) => {
     return (
-        <Wrapper>
+        <>
             <GalleryTitle>Films gallery</GalleryTitle>
             {error &&
                 <Message>
@@ -22,7 +22,7 @@ export const FilmList = ({error, films}) => {
                     })}
                 </Gallery>
             </Container>
-        </Wrapper>
+        </>
     );
 };
 

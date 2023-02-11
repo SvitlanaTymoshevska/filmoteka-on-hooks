@@ -2,8 +2,7 @@ import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 import { Navigation } from "components/Navigation/Navigation";
-import { Audio } from 'react-loader-spinner';
-import { theme } from "constants/theme";
+import { Loader } from "components/Loader/Loader";
 import { Wrapper, Container } from "components/LibraryHeader/LibraryHeader.styled";
 
 export const LibraryHeader = () => {
@@ -16,15 +15,7 @@ export const LibraryHeader = () => {
                 </Container>      
             </Wrapper>
             <Suspense
-                fallback={
-                    <Audio
-                        height="100"
-                        width="100"
-                        color={theme.colors.accent}
-                        ariaLabel="audio-loading"
-                        wrapperStyle={{"justifyContent":"center"}}
-                        visible={true}
-                    />}>
+                fallback={<Loader />}>
                 <Outlet />
             </Suspense>
         </>
