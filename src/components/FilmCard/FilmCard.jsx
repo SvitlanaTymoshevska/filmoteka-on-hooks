@@ -1,44 +1,6 @@
 import PropTypes from "prop-types";
-import { Card, Img, Plug, Info, Title, Genres } from "components/FilmCard/FilmCard.styled";
-
-export const FilmCard = ({ film }) => {
-  const { poster_path, title, genre_ids, release_date } = film;
-  
-  const poster = poster_path ? (
-    <Img
-          srcSet={`
-              https://image.tmdb.org/t/p/w300/${poster_path}     300w,
-              https://image.tmdb.org/t/p/w500/${poster_path}     500w,
-              https://image.tmdb.org/t/p/w780/${poster_path}     780w,
-              https://image.tmdb.org/t/p/w1280/${poster_path}    1280w,
-              https://image.tmdb.org/t/p/original/${poster_path} 2000w
-          `}
-          loading="lazy"
-          src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
-          alt={`Poster of the film ${title}`}
-          sizes="(max-width: 320px) 280px, (max-width: 768px) 340px, 400px"
-    />
-  ) : <Plug>Poster not found</Plug>;   
-
-  return (
-    <Card>
-      {poster}
-      <Info>
-        <Title>{title}</Title>
-        <Genres>{genresList(genre_ids)}{year(release_date)}</Genres>
-      </Info>
-    </Card>
-  );
-};
-
-FilmCard.propType = {
-  film: PropTypes.shape({
-    genre_ids: PropTypes.arrayOf(PropTypes.number),
-    poster_path: PropTypes.string,
-    release_date: PropTypes.string,
-    title: PropTypes.string.isRequired,
-  }),
-};
+import { useLocation } from "react-router-dom";
+import { Card, StyledLink, Img, Plug, Info, Title, Genres } from "components/FilmCard/FilmCard.styled";
 
 const genresList = (filmGenresID) => {
   const genresArray = JSON.parse(localStorage.getItem('genres'));
@@ -66,3 +28,46 @@ const year = (release_date) => {
   year = ' | ' + release_date?.slice(0, 4);
   return year;
 }
+
+export const FilmCard = ({ film }) => {
+  const { poster_path, title, genre_ids, release_date, id } = film;
+  const location = useLocation();
+  
+  const poster = poster_path ? (
+    <Img
+          srcSet={`
+              https://image.tmdb.org/t/p/w300/${poster_path}     300w,
+              https://image.tmdb.org/t/p/w500/${poster_path}     500w,
+              https://image.tmdb.org/t/p/w780/${poster_path}     780w,
+              https://image.tmdb.org/t/p/w1280/${poster_path}    1280w,
+              https://image.tmdb.org/t/p/original/${poster_path} 2000w
+          `}
+          loading="lazy"
+          src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+          alt={`Poster of the film ${title}`}
+          sizes="(max-width: 320px) 280px, (max-width: 768px) 340px, 400px"
+    />
+  ) : <Plug>Poster not found</Plug>;   
+
+  return (
+    <Card>
+      <StyledLink to={`film/${id}`} state={{ from: location }}>
+        {poster}
+        <Info>
+          <Title>{title}</Title>
+          <Genres>{genresList(genre_ids)}{year(release_date)}</Genres>
+        </Info>
+      </StyledLink>
+    </Card>
+  );
+};
+
+FilmCard.propType = {
+  film: PropTypes.shape({
+    genre_ids: PropTypes.arrayOf(PropTypes.number),
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+  }),
+};

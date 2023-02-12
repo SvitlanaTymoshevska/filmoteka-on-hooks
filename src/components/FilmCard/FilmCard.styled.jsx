@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
 import { theme } from "constants/theme";
 
 export const Card = styled.li`
@@ -18,6 +20,9 @@ export const Card = styled.li`
     box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12),
       0px 4px 4px rgba(0, 0, 0, 0.06), 1px 4px 6px rgba(0, 0, 0, 0.16);
   }
+`;
+export const StyledLink = styled(Link)`
+  color: ${theme.colors.secondary};
 `;
 
 export const Img = styled.img`
@@ -64,7 +69,7 @@ export const Title = styled.h2`
   text-transform: uppercase;
   line-height: 1.35;
   font-size: 12px;
-  font-weight: 500;
+  font-weight: 700;
 
   @media screen and (min-width: 1280px) {
     font-size: 20px;

@@ -111,5 +111,5 @@ export const ScrollButton = styled.button`
 export const ScrollIcon = styled(ImArrowUp2)`
     width: 18px;
     height: 18px;
-    color:  ${theme.colors.main};
+    color:  ${theme.colors};
 `;

@@ -1,8 +1,8 @@
 import PropTypes from "prop-types";
-import { Container, Message, GalleryTitle, Gallery } from "components/FilmGallery/FilmGallery.Styled";
+import {Container, Message, GalleryTitle, Gallery } from "components/FilmGallery/FilmGallery.Styled";
 import { FilmCard } from "components/FilmCard/FilmCard";
 
-export const FilmList = ({error, films}) => {
+export const FilmGallery = ({error, films}) => {
     return (
         <>
             <GalleryTitle>Films gallery</GalleryTitle>
@@ -26,7 +26,7 @@ export const FilmList = ({error, films}) => {
     );
 };
 
-FilmList.propType = {
+FilmGallery.propType = {
     error: PropTypes.string,
     film: PropTypes.shape({
         genre_ids: PropTypes.arrayOf(PropTypes.number),  
